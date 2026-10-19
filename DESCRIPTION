@@ -1,0 +1,25 @@
+Package: amlagent
+Title: SAML-D Commons Demo
+Version: 0.0.0.9000
+Authors@R:
+    person("Sara", "Altman", , "sara.altman@posit.co", role = c("aut", "cre"))
+Description: A basic commons agent for the synthetic SAML-D transaction
+    monitoring dataset.
+License: MIT
+Encoding: UTF-8
+Imports:
+    bsicons,
+    cli,
+    commons (>= 0.1.1),
+    DBI,
+    duckdb,
+    ellmer,
+    htmltools,
+    rlang,
+    shiny,
+    shinychat
+Suggests:
+    rsconnect
+Remotes:
+    posit-dev/commons/pkg-r
+

@@ -1,0 +1,176 @@
+$version: 0.1.0
+$learn_more: https://data-dict.tidyverse.org/
+
+name: SAML-D
+label: Synthetic anti-money-laundering transactions
+description: >-
+  SAML-D is a synthetic transaction monitoring dataset created for
+  anti-money-laundering research. This version contains 9,504,852 transactions
+  and labels 9,873 (0.1039%) as laundering. It includes 11 normal typologies
+  and 17 suspicious typologies. The transactions table has one row per
+  synthetic transaction between a sender account and receiver account.
+details: >-
+  This is synthetic data. Amounts are
+  denominated in payment_currency; the dataset does not provide exchange
+  rates, so amounts in different currencies should not be added or compared
+  directly. The agent exposes a normalized DuckDB view of the original CSV:
+  Date and Time become transaction_date and transaction_time, account
+  identifiers become strings, and is_laundering becomes boolean. Dataset source:
+  https://www.kaggle.com/datasets/berkanoztas/synthetic-transaction-monitoring-dataset-aml/data.
+  Paper: https://ieeexplore.ieee.org/document/10356193.
+
+version:
+  date: 2024-01-12
+
+tables:
+  - name: transactions
+    columns:
+      - name: transaction_time
+        type: string
+        description: Time of day when the transaction occurred.
+        examples: ["10:35:19", "23:04:52"]
+      - name: transaction_date
+        type: date
+        description: Date when the transaction occurred.
+        range: [2022-10-07, 2023-08-23]
+      - name: sender_account
+        type: string
+        description: Synthetic identifier for the account sending funds.
+        examples: ["8724731955", "1491989064"]
+      - name: receiver_account
+        type: string
+        description: Synthetic identifier for the account receiving funds.
+        examples: ["2769355426", "8401255335"]
+      - name: amount
+        type: number(quantity)
+        description: Transaction amount denominated in payment_currency.
+        range: [3.73, 12618498]
+      - name: payment_currency
+        type: enum
+        description: Currency in which the sender made the payment.
+        values:
+          - Albanian lek
+          - Dirham
+          - Euro
+          - Indian rupee
+          - Mexican Peso
+          - Moroccan dirham
+          - Naira
+          - Pakistani rupee
+          - Swiss franc
+          - Turkish lira
+          - UK pounds
+          - US dollar
+          - Yen
+      - name: received_currency
+        type: enum
+        description: Currency in which the receiver received the payment.
+        values:
+          - Albanian lek
+          - Dirham
+          - Euro
+          - Indian rupee
+          - Mexican Peso
+          - Moroccan dirham
+          - Naira
+          - Pakistani rupee
+          - Swiss franc
+          - Turkish lira
+          - UK pounds
+          - US dollar
+          - Yen
+      - name: sender_bank_location
+        type: enum
+        description: Country of the sender's bank.
+        values:
+          - Albania
+          - Austria
+          - France
+          - Germany
+          - India
+          - Italy
+          - Japan
+          - Mexico
+          - Morocco
+          - Netherlands
+          - Nigeria
+          - Pakistan
+          - Spain
+          - Switzerland
+          - Turkey
+          - UAE
+          - UK
+          - USA
+      - name: receiver_bank_location
+        type: enum
+        description: Country of the receiver's bank.
+        values:
+          - Albania
+          - Austria
+          - France
+          - Germany
+          - India
+          - Italy
+          - Japan
+          - Mexico
+          - Morocco
+          - Netherlands
+          - Nigeria
+          - Pakistan
+          - Spain
+          - Switzerland
+          - Turkey
+          - UAE
+          - UK
+          - USA
+      - name: payment_type
+        type: enum
+        description: Method used for the transaction.
+        values:
+          - ACH
+          - Cash Deposit
+          - Cash Withdrawal
+          - Cheque
+          - Credit card
+          - Cross-border
+          - Debit card
+      - name: is_laundering
+        type: boolean
+        description: >-
+          Generated ground-truth label. TRUE marks a transaction assigned to
+          one of the 17 suspicious typologies.
+      - name: laundering_type
+        type: enum
+        description: >-
+          Generated transaction typology. Despite the column name, values
+          beginning with Normal_ are normal transaction patterns.
+        values:
+          - Behavioural_Change_1
+          - Behavioural_Change_2
+          - Bipartite
+          - Cash_Withdrawal
+          - Cycle
+          - Deposit-Send
+          - Fan_In
+          - Fan_Out
+          - Gather-Scatter
+          - Layered_Fan_In
+          - Layered_Fan_Out
+          - Normal_Cash_Deposits
+          - Normal_Cash_Withdrawal
+          - Normal_Fan_In
+          - Normal_Fan_Out
+          - Normal_Foward
+          - Normal_Group
+          - Normal_Mutual
+          - Normal_Periodical
+          - Normal_Plus_Mutual
+          - Normal_Small_Fan_Out
+          - Normal_single_large
+          - Over-Invoicing
+          - Scatter-Gather
+          - Single_large
+          - Smurfing
+          - Stacked Bipartite
+          - Structuring
+

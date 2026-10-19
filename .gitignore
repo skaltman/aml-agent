@@ -1,0 +1,8 @@
+.Rhistory
+.Rproj.user
+commons-cache/
+commons-reviews/
+data/*.csv
+rsconnect/
+unused-test-reviews/
+

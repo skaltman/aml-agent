@@ -1,0 +1,8 @@
+.env
+.Renviron
+.Rhistory
+.Rproj.user
+commons-reviews
+README.md
+rsconnect
+tests

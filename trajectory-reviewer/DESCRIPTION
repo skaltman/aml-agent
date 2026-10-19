@@ -1,0 +1,19 @@
+Package: amltrajectoryreviewer
+Title: AML Trajectory Reviewer Demo
+Version: 0.1.0
+Description: Built-in Commons trajectory reviewer seeded with fictional
+    anti-money-laundering agent trajectories.
+License: MIT
+Encoding: UTF-8
+Imports:
+    bslib,
+    commons (>= 0.1.1),
+    ellmer,
+    htmltools,
+    plotly,
+    shiny,
+    shinychat,
+    yaml
+Remotes:
+    posit-dev/commons/pkg-r@r-v0.1.1,
+    posit-dev/shinychat/pkg-r@r-v0.5.0
